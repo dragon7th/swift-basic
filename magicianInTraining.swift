@@ -68,3 +68,61 @@ Make a card appear by inserting a new card at the top of the stack.
 Implement the function insert(_:atTopOf:) that takes two arguments: the new card to be inserted,
 and the stack of cards. The function should returns a copy of the stack with the new card 
 provided added to the top of the stack.
+
+                                                                                           Make a card appear by inserting a new card at the top of the stack.
+
+Implement the function insert(_:atTopOf:) that takes two arguments: 
+the new card to be inserted, and the stack of cards. The function
+should returns a copy of the stack with the new card provided added 
+to the top of the stack.
+
+let newCard = 8
+insert(newCard, atTopOf: [5, 9, 7, 1])
+// returns [5, 9, 7, 1, 8]
+
+import Foundation
+
+func insert(_ newCard: Int, atTopOf stack: [Int]) -> [Int] {
+    var newStack = stack
+    newStack.append(newCard)
+    return newStack
+}
+
+let newCard = 8
+let originalStack = [5, 9, 7, 1]
+let updatedStack = insert(newCard, atTopOf: originalStack)
+print(updatedStack)
+
+import Foundation
+import Foundation: This line imports the Foundation framework. Foundation provides basic Objective-C data types, collections, and operating system services to Swift. While not strictly required for this particular function (since we're only using basic Int arrays), it's a common practice to include it in Swift files as it provides a wide range of utility functions.
+
+func insert(_ newCard: Int, atTopOf stack: [Int]) -> [Int] {
+func insert(_ newCard: Int, atTopOf stack: [Int]) -> [Int]: This line defines a function named insert. Let's dissect it further:
+func insert(...): This declares a function named insert.
+_ newCard: Int: This defines the first parameter of the function.
+_: The underscore _ means that this parameter does not need to be named when the function is called. For example, we call the function as insert(8, atTopOf: myStack) and not insert(newCard: 8, atTopOf: myStack). This is often used for the first parameter to make the function call read more naturally.
+newCard: Int: This specifies that the parameter is named newCard (internally within the function) and that it expects an integer (Int) value. This represents the new card we want to add to the top of the stack.
+atTopOf stack: [Int]: This defines the second parameter of the function.
+atTopOf: This is the external parameter name. It's what you use when you call the function.
+stack: [Int]: This specifies that the parameter is named stack (internally) and that it expects an array of integers ([Int]). This represents the existing stack of cards.
+-> [Int]: This indicates that the function will return a value, and that the value will be an array of integers ([Int]). This will be the new stack with the card inserted.
+
+    var newStack = stack
+var newStack = stack: This line creates a mutable copy of the stack array.
+var newStack: This declares a new variable named newStack. The var keyword indicates that the value of this variable can be changed (i.e., it's mutable).
+= stack: This assigns the value of the stack parameter to the newStack variable. Crucially, this creates a copy of the array. In Swift, arrays are value types (structs), so assigning one array to another creates a new, independent copy. This is important because we don't want to modify the original stack array that was passed into the function.
+
+    newStack.append(newCard)
+newStack.append(newCard): This line adds the newCard to the end of the newStack array, which, in this analogy, adds it to the top of the stack.
+newStack.append(...): This calls the append method on the newStack array. The append method adds a new element to the end of the array.
+(newCard): This provides the value to be appended, which is the newCard integer that was passed into the function.
+
+    return newStack
+return newStack: This line returns the modified newStack array, which now contains the original elements of the stack with the new card added to the "top" (end) of the array.
+
+let newCard = 8
+let originalStack = [5, 9, 7, 1]
+let updatedStack = insert(newCard, atTopOf: originalStack)
+print(updatedStack)
+These lines set up the example and print the output. They are not part of the core function definition but demonstrate how to use it.
+In summary, the insert function takes a new card and a stack of cards, creates a copy of the stack, adds the new card to the end of the copied stack (simulating inserting at the top), and returns the modified copy. The original stack remains unchanged.
