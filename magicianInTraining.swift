@@ -68,8 +68,7 @@ Make a card appear by inserting a new card at the top of the stack.
 Implement the function insert(_:atTopOf:) that takes two arguments: the new card to be inserted,
 and the stack of cards. The function should returns a copy of the stack with the new card 
 provided added to the top of the stack.
-
-                                                                                           Make a card appear by inserting a new card at the top of the stack.
+Make a card appear by inserting a new card at the top of the stack.
 
 Implement the function insert(_:atTopOf:) that takes two arguments: 
 the new card to be inserted, and the stack of cards. The function
@@ -126,8 +125,7 @@ let updatedStack = insert(newCard, atTopOf: originalStack)
 print(updatedStack)
 These lines set up the example and print the output. They are not part of the core function definition but demonstrate how to use it.
 In summary, the insert function takes a new card and a stack of cards, creates a copy of the stack, adds the new card to the end of the copied stack (simulating inserting at the top), and returns the modified copy. The original stack remains unchanged.
-
-                                                                                                                                     Make a card disappear by removing the card at the given position from the stack.
+Make a card disappear by removing the card at the given position from the stack.
 
 Implement the function removeCard(at:from:) that takes two arguments: 
 at which is the position of the card in the stack, and from which is the stack of cards. 
@@ -177,3 +175,69 @@ newStack.remove(at: index): This line removes the element at the specified index
 Returning the Modified Stack:
 
 return newStack: This line returns the newStack array, which now contains the original elements of the stack except for the card that was removed at the specified index.
+                                                                                                                                    
+Make a card appear by inserting a new card at the given position in the stack.
+
+Implement the function insert(_:at:from:) that takes three arguments: the new card to be inserted, 
+the position at which the new card should be inserted, and the stack of cards. 
+The function should return a copy of the stack with the new card provided added at the given position. 
+If the given index is not a valid index in the stack, the original stack should be returned, unchanged.
+
+let newCard = 8
+insert(newCard, at: 2, from: [5, 9, 7, 1])
+// returns [5, 9, 8, 7, 1]
+
+Function Definition:
+
+
+func insert(_ newCard: Int, at position: Int, from stack: [Int]) -> [Int] {
+    // Function body goes here
+}
+func insert(...) -> [Int]: This line defines a function named insert.
+It takes three input parameters:
+newCard: An Int representing the card to be inserted.
+position: An Int representing the index at which the card should be inserted.
+stack: An array of Int representing the original stack of cards.
+The -> [Int] part specifies that the function will return a new array of Int representing the modified stack.
+2. Creating a Copy:
+
+
+var newStack = stack
+var newStack = stack: This line creates a copy of the original stack array and assigns it to a new variable called newStack. It's crucial to create a copy. Without it, you'd be modifying the original array directly, which might not be what you want (especially if the original array is used elsewhere). By using var, we are creating a mutable copy.
+3. Input Validation:
+
+
+if position >= 0 && position <= stack.count {
+    // Insertion logic goes here
+}
+if position >= 0 && position <= stack.count: This if statement checks whether the provided position is a valid index for inserting an element into the array.
+position >= 0: Ensures that the position is not negative (array indices start at 0).
+position <= stack.count: Ensures that the position is not greater than the number of elements in the array. It's important to use <= here, rather than <. The .insert(_:at:) function allows insertion before the end of the array, at stack.count.
+4. Inserting the New Card:
+
+
+newStack.insert(newCard, at: position)
+newStack.insert(newCard, at: position): This line performs the actual insertion. It uses the insert(_:at:) method of the newStack array to insert newCard at the specified position. This shifts all the elements from that position onwards to the right, making space for the new card.
+5. Returning the Modified Stack:
+
+
+return newStack
+return newStack: If the position was valid (i.e., the if condition was true), this line returns the newStack array, which now contains the inserted card.
+6. Returning the Original Stack (if invalid):
+
+The if statement in step 3 only executes the insertion logic if the position is valid. If the position is not valid, the code inside the if block is skipped, and the function proceeds directly to the return newStack statement after the if block. In this case, newStack is the unmodified copy of the original stack, which is then returned, so the function returns the original stack.
+
+Example Usage:
+
+
+let newCard = 8
+let result = insert(newCard, at: 2, from: [5, 9, 7, 1])
+print(result) // Output: [5, 9, 8, 7, 1]
+
+let invalidIndexResult = insert(newCard, at: 5, from: [5, 9, 7, 1])
+print(invalidIndexResult) // Output: [5, 9, 7, 1]
+The first example inserts the card 8 at index 2 of the array [5, 9, 7, 1], resulting in [5, 9, 8, 7, 1].
+The second example tries to insert the card 8 at index 5 which is out of bounds (the valid indices are 0 to 4). The function returns the original array, unchanged.
+In summary, the code defines a function that inserts a new card into a stack at a specified position, taking care to validate the position and create a copy of the stack to avoid modifying the original. If the index is invalid, the function returns the original, unchanged stack.                                                                                                                                     
+                                                                                                                                     
+                                                                                                                                     
