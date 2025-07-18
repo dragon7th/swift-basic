@@ -107,17 +107,17 @@ atTopOf: This is the external parameter name. It's what you use when you call th
 stack: [Int]: This specifies that the parameter is named stack (internally) and that it expects an array of integers ([Int]). This represents the existing stack of cards.
 -> [Int]: This indicates that the function will return a value, and that the value will be an array of integers ([Int]). This will be the new stack with the card inserted.
 
-    var newStack = stack
+var newStack = stack
 var newStack = stack: This line creates a mutable copy of the stack array.
 var newStack: This declares a new variable named newStack. The var keyword indicates that the value of this variable can be changed (i.e., it's mutable).
 = stack: This assigns the value of the stack parameter to the newStack variable. Crucially, this creates a copy of the array. In Swift, arrays are value types (structs), so assigning one array to another creates a new, independent copy. This is important because we don't want to modify the original stack array that was passed into the function.
 
-    newStack.append(newCard)
+newStack.append(newCard)
 newStack.append(newCard): This line adds the newCard to the end of the newStack array, which, in this analogy, adds it to the top of the stack.
 newStack.append(...): This calls the append method on the newStack array. The append method adds a new element to the end of the array.
 (newCard): This provides the value to be appended, which is the newCard integer that was passed into the function.
 
-    return newStack
+return newStack
 return newStack: This line returns the modified newStack array, which now contains the original elements of the stack with the new card added to the "top" (end) of the array.
 
 let newCard = 8
@@ -126,3 +126,54 @@ let updatedStack = insert(newCard, atTopOf: originalStack)
 print(updatedStack)
 These lines set up the example and print the output. They are not part of the core function definition but demonstrate how to use it.
 In summary, the insert function takes a new card and a stack of cards, creates a copy of the stack, adds the new card to the end of the copied stack (simulating inserting at the top), and returns the modified copy. The original stack remains unchanged.
+
+                                                                                                                                     Make a card disappear by removing the card at the given position from the stack.
+
+Implement the function removeCard(at:from:) that takes two arguments: 
+at which is the position of the card in the stack, and from which is the stack of cards. 
+The function should return a copy of the stack with the card at position index removed. 
+If the given index is not a valid index in the stack, the original stack should 
+be returned, unchanged.
+
+let index = 2
+removeCard(at: index, from: [3, 2, 6, 4, 8])
+// returns [3, 2, 4, 8]
+
+import Foundation
+
+func removeCard(at index: Int, from stack: [Int]) -> [Int] {
+    guard index >= 0, index < stack.count else {
+        return stack // Return original stack if index is out of bounds
+    }
+
+    var newStack = stack
+    newStack.remove(at: index)
+    return newStack
+}
+
+let index = 2
+let originalStack = [3, 2, 6, 4, 8]
+let updatedStack = removeCard(at: index, from: originalStack)
+print(updatedStack)
+
+Function Definition:
+
+func removeCard(at index: Int, from stack: [Int]) -> [Int] defines a function named removeCard that takes two arguments:
+at index: Int: The index of the card to remove (an integer).
+from stack: [Int]: The stack of cards (an array of integers).
+-> [Int]: The function returns a new array of integers, representing the stack with the card removed.
+Index Validation:
+
+guard index >= 0, index < stack.count else { return stack } This is a guard statement that checks if the provided index is valid for the given stack.
+index >= 0: Checks if the index is non-negative (0 or greater).
+index < stack.count: Checks if the index is less than the number of elements in the stack.
+If either of these conditions is false (meaning the index is out of bounds), the else block is executed. In this case, the else block simply return stack, which returns the original, unmodified stack. This handles the case where an invalid index is provided.
+Creating a Copy:
+
+var newStack = stack This line creates a mutable copy of the stack array, similar to the previous example. We do this to avoid modifying the original stack that was passed into the function.
+Removing the Card:
+
+newStack.remove(at: index): This line removes the element at the specified index from the newStack array. The remove(at:) method modifies the array in place.
+Returning the Modified Stack:
+
+return newStack: This line returns the newStack array, which now contains the original elements of the stack except for the card that was removed at the specified index.
