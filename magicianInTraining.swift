@@ -240,4 +240,56 @@ The first example inserts the card 8 at index 2 of the array [5, 9, 7, 1], resul
 The second example tries to insert the card 8 at index 5 which is out of bounds (the valid indices are 0 to 4). The function returns the original array, unchanged.
 In summary, the code defines a function that inserts a new card into a stack at a specified position, taking care to validate the position and create a copy of the stack to avoid modifying the original. If the index is invalid, the function returns the original, unchanged stack.                                                                                                                                     
                                                                                                                                      
-                                                                                                                                     
+Check whether the size of the stack is equal to stackSize or not.
+
+Implement the function checkSizeOfStack(_:_:) 
+that takes two arguments: stack which is the stack of cards, 
+and stackSize which is the size of the stack. The function should return true if 
+the size of the stack is equal to stackSize and false otherwise.
+
+let stackSize = 4
+checkSizeOfStack([3, 2, 6, 4, 8], stackSize)
+// returns false
+
+func checkSizeOfStack(_ stack: [Int], _ stackSize: Int) -> Bool {
+    return stack.count == stackSize
+}
+
+let stackSize = 4
+let result = checkSizeOfStack([3, 2, 6, 4, 8], stackSize)
+print(result) // Output: false
+
+func checkSizeOfStack(_ stack: [Int], _ stackSize: Int) -> Bool {
+    return stack.count == stackSize
+}
+Let's break down this Swift code:
+
+Function Definition:
+
+
+func checkSizeOfStack(_ stack: [Int], _ stackSize: Int) -> Bool {
+    // Function body
+}
+func checkSizeOfStack(...) -> Bool: This defines a function named checkSizeOfStack.
+It takes two input parameters:
+stack: An array of Int representing the stack of cards.
+stackSize: An Int representing the expected size of the stack.
+The -> Bool part specifies that the function will return a Bool value (either true or false).
+Checking the Size:
+
+
+return stack.count == stackSize
+stack.count: This accesses the count property of the stack array. The count property returns the number of elements in the array.
+==: This is the equality operator. It compares the value on the left side (stack.count) to the value on the right side (stackSize).
+return: The function returns the result of the equality comparison (either true if the stack's size is equal to stackSize, or false if they are not equal).
+In essence, the function is a concise way to determine if the actual number of elements in an array matches a given expected size.
+
+Example Usage:
+
+
+let stackSize = 4
+let result = checkSizeOfStack([3, 2, 6, 4, 8], stackSize)
+print(result) // Output: false
+let stackSize = 4: This defines a constant stackSize and assigns it the value 4.
+let result = checkSizeOfStack([3, 2, 6, 4, 8], stackSize): This calls the checkSizeOfStack function with the array [3, 2, 6, 4, 8] and the value 4. The function returns false because the array has 5 elements, not 4.
+print(result): This prints the returned value (false) to the console.                                                                                                                                    
